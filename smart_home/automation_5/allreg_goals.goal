@@ -43,10 +43,12 @@ ComplexGoal Kitchen -> {
 
 ComplexGoal KitchenBlink -> {
   algorithm: ALL_ACCOMPLISHED_ORDERED;
-  addGoal(KitchenIntruder);
   addGoal(lights.KitchenOn);
   addGoal(lights.KitchenOff);
-  addGoal(KitchenBlink);
+  addGoal(lights.KitchenOn);
+  addGoal(lights.KitchenOff);
+  addGoal(lights.KitchenOn);
+  addGoal(lights.KitchenOff);
 }
 
 ComplexGoal Livingroom -> {
@@ -59,10 +61,12 @@ ComplexGoal Livingroom -> {
 
 ComplexGoal LivingroomBlink -> {
   algorithm: ALL_ACCOMPLISHED_ORDERED;
-  addGoal(LivingroomIntruder);
   addGoal(lights.LivingroomOn);
   addGoal(lights.LivingroomOff);
-  addGoal(LivingroomBlink);
+  addGoal(lights.LivingroomOn);
+  addGoal(lights.LivingroomOff);
+  addGoal(lights.LivingroomOn);
+  addGoal(lights.LivingroomOff);
 }
 
 ComplexGoal Bedroom -> {
@@ -75,10 +79,12 @@ ComplexGoal Bedroom -> {
 
 ComplexGoal BedroomBlink -> {
   algorithm: ALL_ACCOMPLISHED_ORDERED;
-  addGoal(BedroomIntruder);
   addGoal(lights.BedroomOn);
   addGoal(lights.BedroomOff);
-  addGoal(BedroomBlink);
+  addGoal(lights.BedroomOn);
+  addGoal(lights.BedroomOff);
+  addGoal(lights.BedroomOn);
+  addGoal(lights.BedroomOff);
 }
 
 // <-------------------------------
