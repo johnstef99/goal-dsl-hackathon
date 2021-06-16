@@ -1,0 +1,59 @@
+// Complex Goals -------------------->
+
+ComplexGoal Main -> {
+    algorithm: ALL_ACCOMPLISHED_ORDERED;
+    addGoal(TimeTrigger);
+    addGoal(OpenValve);
+    addGoal(MixOrganics);
+    addGoal(MoveArm);
+    addGoal(CloseValve);
+    addGoal(MoveBack);
+}
+
+// <-------------------------------
+
+// Topic Goals --------------------------------->
+
+TopicMsgParamGoal TimeTrigger -> {
+  topic: "garden.datetime";
+  condition: "time" == "07:00";
+}
+
+TopicMsgReceivedGoal OpenValve -> {
+  topic: "garden.robotic_arm.water_valve.open";
+}
+
+TopicMsgReceivedGoal CloseValve -> {
+  topic: "garden.robotic_arm.water_valve.close";
+}
+
+TopicMsgReceivedGoal MixOrganics -> {
+  topic: "garden.robotic_arm.mix_organics";
+}
+
+// <----------------------------------------------
+
+// Trajectory Goals --------------------------->
+
+WaypointTrajectoryGoal MoveArm -> {
+  points: [Point2D(0,0),
+           Point2D(0,10),
+           Point2D(0,20),
+           Point2D(10,20),
+           Point2D(10,10),
+           Point2D(10,0),
+           Point2D(20,0),
+           Point2D(20,10),
+           Point2D(20,20)];
+  maxDeviation: 10;
+  timeConstraints: [FROM_GOAL_START(< 600)];
+  listening: "garden.robotic_arm.base.pose.translation";
+}
+
+PositionGoal MoveBack -> {
+  position: Point2D(0,0);
+  maxDeviation: 10;
+  listening: "garden.robotic_arm.base.pose.translation";
+}
+
+// <---------------------------------

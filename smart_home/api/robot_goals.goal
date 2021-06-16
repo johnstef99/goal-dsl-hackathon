@@ -1,0 +1,27 @@
+TopicMsgParamGoal Kitchen -> {
+  topic: "robot.on_enter";
+  condition: "room" == "kitchen";
+  timeConstraints: [FROM_GOAL_START(> 6),
+                    FROM_GOAL_START(< 11)];
+}
+
+TopicMsgParamGoal Livingroom -> {
+  topic: "robot.on_enter";
+  condition: "room" == "livingroom";
+  timeConstraints: [FROM_GOAL_START(> 5),
+                    FROM_GOAL_START(< 10)];
+}
+
+TopicMsgParamGoal Bedroom -> {
+  topic: "robot.on_enter";
+  condition: "room" == "bedroom";
+  timeConstraints: [FROM_GOAL_START(> 2),
+                    FROM_GOAL_START(< 5)];
+}
+
+TopicMsgParamGoal Bathroom -> {
+  topic: "robot.on_enter";
+  condition: "room" == "bathroom";
+  timeConstraints: [FROM_GOAL_START(> 1),
+                    FROM_GOAL_START(< 4)];
+}

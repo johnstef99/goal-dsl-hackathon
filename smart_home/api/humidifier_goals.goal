@@ -1,0 +1,55 @@
+TopicMsgParamGoal KitchenOn -> {
+  topic: "kitchen.humidifier";
+  condition: "state" == 1;
+}
+
+TopicMsgParamGoal KitchenOff -> {
+  topic: "kitchen.humidifier";
+  condition: "state" == 0;
+}
+
+TopicMsgParamGoal LivingroomOn -> {
+  topic: "livingroom.humidifier";
+  condition: "state" == 1;
+}
+
+TopicMsgParamGoal LivingroomOff -> {
+  topic: "livingroom.humidifier";
+  condition: "state" == 0;
+}
+
+TopicMsgParamGoal BedroomOn -> {
+  topic: "bedroom.humidifier";
+  condition: "state" == 1;
+}
+
+TopicMsgParamGoal BedroomOff -> {
+  topic: "bedroom.humidifier";
+  condition: "state" == 0;
+}
+
+TopicMsgParamGoal BathroomOn -> {
+  topic: "bathroom.humidifier";
+  condition: "state" == 1;
+}
+
+TopicMsgParamGoal BathroomOff -> {
+  topic: "bathroom.humidifier";
+  condition: "state" == 0;
+}
+
+ComplexGoal AllOff -> {
+  algorithm: ALL_ACCOMPLISHED;
+  addGoal(KitchenOff);
+  addGoal(LivingroomOff);
+  addGoal(BedroomOff);
+  addGoal(BathroomOff);
+}
+
+ComplexGoal AllOn -> {
+  algorithm: ALL_ACCOMPLISHED;
+  addGoal(KitchenOn);
+  addGoal(LivingroomOn);
+  addGoal(BedroomOn);
+  addGoal(BathroomOn);
+}

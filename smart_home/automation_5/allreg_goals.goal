@@ -1,0 +1,84 @@
+import lights_goals.goal as lights;
+import robot_goals.goal as robot;
+
+
+// Complex Goals -------------------->
+
+TopicMsgReceivedGoal KitchenIntruder -> {
+    topic: "kitchen.intruder_detected";
+}
+
+TopicMsgReceivedGoal LivingroomIntruder -> {
+    topic: "livingroom.intruder_detected";
+}
+
+TopicMsgReceivedGoal BedroomIntruder -> {
+    topic: "bedroom.intruder_detected";
+}
+
+TopicMsgParamGoal TvOn -> {
+  topic: "livingroom.tv_relay";
+  condition: "state" == 1;
+}
+
+TopicMsgParamGoal PlaySong -> {
+  topic: "livingroom.audio.play_from_youtube";
+  condition: "track_name" == "Seek and Destroy";
+}
+
+ComplexGoal General -> {
+  algorithm: ALL_ACCOMPLISHED;
+  addGoal(lights.AllOn);
+  addGoal(TvOn);
+  addGoal(PlaySong);
+}
+
+ComplexGoal Kitchen -> {
+  algorithm: ALL_ACCOMPLISHED_ORDERED;
+  addGoal(KitchenIntruder);
+  addGoal(General);
+  addGoal(KitchenBlink);
+  addGoal(robot.Kitchen);
+}
+
+ComplexGoal KitchenBlink -> {
+  algorithm: ALL_ACCOMPLISHED_ORDERED;
+  addGoal(KitchenIntruder);
+  addGoal(lights.KitchenOn);
+  addGoal(lights.KitchenOff);
+  addGoal(KitchenBlink);
+}
+
+ComplexGoal Livingroom -> {
+  algorithm: ALL_ACCOMPLISHED_ORDERED;
+  addGoal(LivingroomIntruder);
+  addGoal(General);
+  addGoal(LivingroomBlink);
+  addGoal(robot.Livingroom);
+}
+
+ComplexGoal LivingroomBlink -> {
+  algorithm: ALL_ACCOMPLISHED_ORDERED;
+  addGoal(LivingroomIntruder);
+  addGoal(lights.LivingroomOn);
+  addGoal(lights.LivingroomOff);
+  addGoal(LivingroomBlink);
+}
+
+ComplexGoal Bedroom -> {
+  algorithm: ALL_ACCOMPLISHED_ORDERED;
+  addGoal(BedroomIntruder);
+  addGoal(General);
+  addGoal(BedroomBlink);
+  addGoal(robot.Bedroom);
+}
+
+ComplexGoal BedroomBlink -> {
+  algorithm: ALL_ACCOMPLISHED_ORDERED;
+  addGoal(BedroomIntruder);
+  addGoal(lights.BedroomOn);
+  addGoal(lights.BedroomOff);
+  addGoal(BedroomBlink);
+}
+
+// <-------------------------------

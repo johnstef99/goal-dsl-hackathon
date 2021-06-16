@@ -1,0 +1,39 @@
+TopicMsgParamGoal KitchenUnder30 -> {
+  topic: "kitchen.humidity";
+  condition: "humidity" < 0.3;
+}
+
+TopicMsgParamGoal KitchenOver50 -> {
+  topic: "kitchen.humidity";
+  condition: "humidity" > 0.5;
+}
+
+TopicMsgParamGoal LivingroomUnder30 -> {
+  topic: "livingroom.humidity";
+  condition: "humidity" < 0.3;
+}
+
+TopicMsgParamGoal LivingroomOver50 -> {
+  topic: "livingroom.humidity";
+  condition: "humidity" > 0.5;
+}
+
+TopicMsgParamGoal BedroomUnder30 -> {
+  topic: "bedroom.humidity";
+  condition: "humidity" < 0.3;
+}
+
+TopicMsgParamGoal BedroomOver50 -> {
+  topic: "bedroom.humidity";
+  condition: "humidity" > 0.5;
+}
+
+TopicMsgParamGoal BathroomUnder30 -> {
+  topic: "bathroom.humidity";
+  condition: "humidity" < 0.3;
+}
+
+TopicMsgParamGoal BathroomOver50 -> {
+  topic: "bathroom.humidity";
+  condition: "humidity" > 0.5;
+}

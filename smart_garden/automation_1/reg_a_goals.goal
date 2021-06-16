@@ -1,0 +1,50 @@
+// ComplexGoal -------------------->
+ComplexGoal Main -> {
+    algorithm: ALL_ACCOMPLISHED_ORDERED;
+    addGoal(TempOrHumTriger);
+    addGoal(OpenWin);
+    addGoal(TempWait);
+    addGoal(HumWait);
+    addGoal(CloseWin);
+}
+
+ComplexGoal TempOrHumTriger -> {
+    algorithm: AT_LEAST_ONE;
+    addGoal(TempCheck);
+    addGoal(HumCheck);
+}
+// <-------------------------------
+
+// TopicGoals ------------------------------>
+TopicMsgParamGoal TempCheck -> {
+  topic: "garden.temperature";
+  condition: "regionA" > 30;
+}
+
+TopicMsgParamGoal HumCheck -> {
+  topic: "garden.humidity";
+  condition: "regionA" > 0.8;
+}
+
+TopicMsgParamGoal TempWait -> {
+  topic: "garden.temperature";
+  condition: "regionA" < 25;
+  timeConstraints: [FROM_GOAL_START(< 1800)];
+}
+
+TopicMsgParamGoal HumWait -> {
+  topic: "garden.humidity";
+  condition: "regionA" < 0.3;
+  timeConstraints: [FROM_GOAL_START(< 1800)];
+}
+
+TopicMsgParamGoal OpenWin -> {
+  topic: "garden.regionA.window";
+  condition: "state" == 1;
+}
+
+TopicMsgParamGoal CloseWin -> {
+  topic: "garden.regionA.window";
+  condition: "state" == 0;
+}
+// <-------------------------------------------

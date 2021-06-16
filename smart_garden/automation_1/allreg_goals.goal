@@ -1,0 +1,26 @@
+// ComplexGoal -------------------->
+ComplexGoal Main -> {
+    algorithm: ALL_ACCOMPLISHED_ORDERED;
+    addGoal(AirQLess50);
+    //TODO: open all windows
+    addGoal(AirQGreater80);
+    //TODO: close all windows
+}
+
+// <-------------------------------
+
+TopicMsgParamGoal AirQLess50 -> {
+  topic: "garden.air_quality";
+  condition: (("regionA" < 0.5)
+             OR ("regionB" < 0.5))
+             OR (("regionC" < 0.5)
+             OR ("regionD" < 0.5));
+}
+
+TopicMsgParamGoal AirQGreater80 -> {
+  topic: "garden.air_quality";
+  condition: (("regionA" > 0.8)
+             AND ("regionB" > 0.8))
+             AND ( ("regionC" > 0.8)
+             AND ("regionD" > 0.8));
+}

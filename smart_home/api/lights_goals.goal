@@ -1,0 +1,63 @@
+TopicMsgParamGoal KitchenOn -> {
+  topic: "kitchen.light";
+  condition: (("red" == 255) AND ("green" == 255))
+             AND
+             (("blue" == 255) AND ("intensity" == 1));
+}
+
+TopicMsgParamGoal KitchenOff -> {
+  topic: "kitchen.light";
+  condition: "intensity" == 0;
+}
+
+TopicMsgParamGoal LivingroomOn -> {
+  topic: "livingroom.light";
+  condition: (("red" == 255) AND ("green" == 255))
+             AND
+             (("blue" == 255) AND ("intensity" == 1));
+}
+
+TopicMsgParamGoal LivingroomOff -> {
+  topic: "livingroom.light";
+  condition: "intensity" == 0;
+}
+
+TopicMsgParamGoal BedroomOn -> {
+  topic: "bedroom.light";
+  condition: (("red" == 255) AND ("green" == 255))
+             AND
+             (("blue" == 255) AND ("intensity" == 1));
+}
+
+TopicMsgParamGoal BedroomOff -> {
+  topic: "bedroom.light";
+  condition: "intensity" == 0;
+}
+
+TopicMsgParamGoal BathroomOn -> {
+  topic: "bathroom.light";
+  condition: (("red" == 255) AND ("green" == 255))
+             AND
+             (("blue" == 255) AND ("intensity" == 1));
+}
+
+TopicMsgParamGoal BathroomOff -> {
+  topic: "bathroom.light";
+  condition: "intensity" == 0;
+}
+
+ComplexGoal AllOff -> {
+  algorithm: ALL_ACCOMPLISHED;
+  addGoal(KitchenOff);
+  addGoal(LivingroomOff);
+  addGoal(BedroomOff);
+  addGoal(BathroomOff);
+}
+
+ComplexGoal AllOn -> {
+  algorithm: ALL_ACCOMPLISHED;
+  addGoal(KitchenOn);
+  addGoal(LivingroomOn);
+  addGoal(BedroomOn);
+  addGoal(BathroomOn);
+}

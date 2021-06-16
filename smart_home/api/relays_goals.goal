@@ -1,0 +1,32 @@
+TopicMsgParamGoal KitchenOn -> {
+  topic: "kitchen.kitchen_relay";
+  condition: "state" == 1;
+}
+
+TopicMsgParamGoal KitchenOff -> {
+  topic: "kitchen.kitchen_relay";
+  condition: "state" == 0;
+}
+
+TopicMsgParamGoal LivingroomOn -> {
+  topic: "livingroom.tv_relay";
+  condition: "state" == 1;
+}
+
+TopicMsgParamGoal LivingroomOff -> {
+  topic: "livingroom.tv_relay";
+  condition: "state" == 0;
+}
+
+
+ComplexGoal AllOff -> {
+  algorithm: ALL_ACCOMPLISHED;
+  addGoal(KitchenOff);
+  addGoal(LivingroomOff);
+}
+
+ComplexGoal AllOn -> {
+  algorithm: ALL_ACCOMPLISHED;
+  addGoal(KitchenOn);
+  addGoal(LivingroomOn);
+}

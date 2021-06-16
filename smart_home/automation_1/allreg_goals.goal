@@ -1,0 +1,39 @@
+import thermostat_goals.goal as thermostat;
+import humidifier_goals.goal as humidifier;
+import relays_goals.goal as relays;
+
+// Complex Goals -------------------->
+
+ComplexGoal Main -> {
+    algorithm: ALL_ACCOMPLISHED_ORDERED;
+    addGoal(GasTrigger);
+    addGoal(PanicDontPanic);
+}
+
+ComplexGoal PanicDontPanic -> {
+    algorithm: ALL_ACCOMPLISHED;
+    addGoal(thermostat.AllOff);
+    addGoal(humidifier.AllOff);
+    addGoal(relays.AllOff);
+}
+
+// <-------------------------------
+
+// Topic Goals --------------------------------->
+
+TopicMsgParamGoal GasTrigger -> {
+  topic: "kitchen.gas";
+  condition: "gas" > 0.3;
+}
+
+TopicMsgParamGoal AlarmEnable -> {
+  topic: "alarm";
+  condition: "state" == "1";
+}
+
+TopicMsgParamGoal AlarmDisable -> {
+  topic: "alarm";
+  condition: "state" == "0";
+}
+
+// <----------------------------------------------

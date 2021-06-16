@@ -1,0 +1,40 @@
+TopicMsgParamGoal KitchenUnder5P -> {
+  topic: "kitchen.temperature";
+  condition: "temperature" < 26.6;
+}
+
+TopicMsgParamGoal KitchenTargetTemp -> {
+  topic: "kitchen.temperature";
+  condition: "temperature" > 28;
+}
+
+TopicMsgParamGoal LivingroomUnder5P -> {
+  topic: "livingroom.temperature";
+  condition: "temperature" < 26.6;
+}
+
+TopicMsgParamGoal LivingroomTargetTemp -> {
+  topic: "livingroom.temperature";
+  condition: "temperature" > 28;
+}
+
+TopicMsgParamGoal BedroomUnder5P -> {
+  topic: "bedroom.temperature";
+  condition: "temperature" < 26.6;
+}
+
+TopicMsgParamGoal BedroomTargetTemp -> {
+  topic: "bedroom.temperature";
+  condition: "temperature" > 28;
+}
+
+
+TopicMsgParamGoal BathroomUnder5P -> {
+  topic: "bathroom.temperature";
+  condition: "temperature" < 26.6;
+}
+
+TopicMsgParamGoal BathroomTargetTemp -> {
+  topic: "bathroom.temperature";
+  condition: "temperature" > 28;
+}

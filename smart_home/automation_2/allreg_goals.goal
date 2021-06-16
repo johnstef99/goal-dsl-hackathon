@@ -1,0 +1,82 @@
+import humidifier_goals.goal as humidifier;
+import humidity_goals.goal as humidity;
+
+// Complex Goals -------------------->
+
+ComplexGoal Kitchen -> {
+  algorithm: EXACTLY_X_ACCOMPLISHED;
+  xAccomplished: 1;
+  addGoal(KitchenOver);
+  addGoal(KitchenUnder);
+}
+
+ComplexGoal KitchenOver -> {
+  algorithm: ALL_ACCOMPLISHED_ORDERED;
+  addGoal(humidity.KitchenOver50);
+  addGoal(humidifier.KitchenOn);
+}
+
+ComplexGoal KitchenUnder -> {
+  algorithm: ALL_ACCOMPLISHED_ORDERED;
+  addGoal(humidity.KitchenUnder30);
+  addGoal(humidifier.KitchenOff);
+}
+
+ComplexGoal Livingroom -> {
+  algorithm: EXACTLY_X_ACCOMPLISHED;
+  xAccomplished: 1;
+  addGoal(LivingroomOver);
+  addGoal(LivingroomUnder);
+}
+
+ComplexGoal LivingroomOver -> {
+  algorithm: ALL_ACCOMPLISHED_ORDERED;
+  addGoal(humidity.LivingroomOver50);
+  addGoal(humidifier.LivingroomOn);
+}
+
+ComplexGoal LivingroomUnder -> {
+  algorithm: ALL_ACCOMPLISHED_ORDERED;
+  addGoal(humidity.LivingroomUnder30);
+  addGoal(humidifier.LivingroomOff);
+}
+
+ComplexGoal Bedroom -> {
+  algorithm: EXACTLY_X_ACCOMPLISHED;
+  xAccomplished: 1;
+  addGoal(BedroomOver);
+  addGoal(BedroomUnder);
+}
+
+ComplexGoal BedroomOver -> {
+  algorithm: ALL_ACCOMPLISHED_ORDERED;
+  addGoal(humidity.BedroomOver50);
+  addGoal(humidifier.BedroomOn);
+}
+
+ComplexGoal BedroomUnder -> {
+  algorithm: ALL_ACCOMPLISHED_ORDERED;
+  addGoal(humidity.BedroomUnder30);
+  addGoal(humidifier.BedroomOff);
+}
+
+ComplexGoal Bathroom -> {
+  algorithm: EXACTLY_X_ACCOMPLISHED;
+  xAccomplished: 1;
+  addGoal(BathroomOver);
+  addGoal(BathroomUnder);
+}
+
+ComplexGoal BathroomOver -> {
+  algorithm: ALL_ACCOMPLISHED_ORDERED;
+  addGoal(humidity.BathroomOver50);
+  addGoal(humidifier.BathroomOn);
+}
+
+ComplexGoal BathroomUnder -> {
+  algorithm: ALL_ACCOMPLISHED_ORDERED;
+  addGoal(humidity.BathroomUnder30);
+  addGoal(humidifier.BathroomOff);
+}
+
+// <-------------------------------

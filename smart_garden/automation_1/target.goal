@@ -1,0 +1,30 @@
+import reg_a_goals.goal as reg_a;
+import reg_b_goals.goal as reg_b;
+import reg_c_goals.goal as reg_c;
+import reg_d_goals.goal as reg_d;
+import allreg_goals.goal as all_reg;
+
+
+RedisBroker MyMiddleware -> {
+    host: 'localhost';
+    port: 6379;
+    db: 0;
+    auth: AuthPlain('', '');  // AuthPlain(username, password)
+}
+
+
+// Create seperate goal to get correct weights
+ComplexGoal TempOrHum -> {
+  algorithm: ALL_ACCOMPLISHED;
+  addGoal(reg_a.Main);
+  addGoal(reg_b.Main);
+  addGoal(reg_c.Main);
+  addGoal(reg_d.Main);
+}
+
+Target MyAppTarget -> {
+    goals: [TempOrHum,
+            all_reg.Main];
+    middleware: MyMiddleware;
+    concurrent: True;
+}

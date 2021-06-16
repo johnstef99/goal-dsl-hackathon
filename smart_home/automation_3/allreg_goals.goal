@@ -1,0 +1,14 @@
+import robot_goals.goal as robot;
+
+// Complex Goals -------------------->
+
+ComplexGoal Main -> {
+  algorithm: ALL_ACCOMPLISHED_ORDERED;
+  addGoal(robot.Kitchen);
+  addGoal(robot.Livingroom);
+  addGoal(robot.Bedroom);
+  addGoal(robot.Bathroom);
+  timeConstraints: [FROM_GOAL_START(< 1800)];
+}
+
+// <-------------------------------

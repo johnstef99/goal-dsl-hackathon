@@ -1,0 +1,96 @@
+import temperature_goals.goal as temperature;
+import thermostat_goals.goal as thermostat;
+
+
+// Complex Goals -------------------->
+
+TopicMsgReceivedGoal KitchenHuman -> {
+    topic: "kitchen.human_detected";
+}
+
+ComplexGoal Kitchen -> {
+  algorithm: ALL_ACCOMPLISHED_ORDERED;
+  addGoal(KitchenHuman);
+  addGoal(KitchenStartCheking);
+}
+
+ComplexGoal KitchenStartCheking -> {
+  algorithm: EXACTLY_X_ACCOMPLISHED;
+  xAccomplished: 1;
+  addGoal(KitchenTargetTemp);
+  addGoal(KitchenUnder);
+}
+
+ComplexGoal KitchenTargetTemp -> {
+  algorithm: ALL_ACCOMPLISHED_ORDERED;
+  addGoal(temperature.KitchenTargetTemp);
+  addGoal(thermostat.KitchenOff);
+}
+
+ComplexGoal KitchenUnder -> {
+  algorithm: ALL_ACCOMPLISHED_ORDERED;
+  addGoal(temperature.KitchenUnder5P);
+  addGoal(thermostat.KitchenOn);
+}
+
+
+TopicMsgReceivedGoal LivingroomHuman -> {
+    topic: "livingroom.human_detected";
+}
+
+ComplexGoal Livingroom -> {
+  algorithm: ALL_ACCOMPLISHED_ORDERED;
+  addGoal(LivingroomHuman);
+  addGoal(LivingroomStartCheking);
+}
+
+ComplexGoal LivingroomStartCheking -> {
+  algorithm: EXACTLY_X_ACCOMPLISHED;
+  xAccomplished: 1;
+  addGoal(LivingroomTargetTemp);
+  addGoal(LivingroomUnder);
+}
+
+ComplexGoal LivingroomTargetTemp -> {
+  algorithm: ALL_ACCOMPLISHED_ORDERED;
+  addGoal(temperature.LivingroomTargetTemp);
+  addGoal(thermostat.LivingroomOff);
+}
+
+ComplexGoal LivingroomUnder -> {
+  algorithm: ALL_ACCOMPLISHED_ORDERED;
+  addGoal(temperature.LivingroomUnder5P);
+  addGoal(thermostat.LivingroomOn);
+}
+
+
+TopicMsgReceivedGoal BedroomHuman -> {
+    topic: "bedroom.human_detected";
+}
+
+ComplexGoal Bedroom -> {
+  algorithm: ALL_ACCOMPLISHED_ORDERED;
+  addGoal(BedroomHuman);
+  addGoal(BedroomStartCheking);
+}
+
+ComplexGoal BedroomStartCheking -> {
+  algorithm: EXACTLY_X_ACCOMPLISHED;
+  xAccomplished: 1;
+  addGoal(BedroomTargetTemp);
+  addGoal(BedroomUnder);
+}
+
+ComplexGoal BedroomTargetTemp -> {
+  algorithm: ALL_ACCOMPLISHED_ORDERED;
+  addGoal(temperature.BedroomTargetTemp);
+  addGoal(thermostat.BedroomOff);
+}
+
+ComplexGoal BedroomUnder -> {
+  algorithm: ALL_ACCOMPLISHED_ORDERED;
+  addGoal(temperature.BedroomUnder5P);
+  addGoal(thermostat.BedroomOn);
+}
+
+// <-------------------------------

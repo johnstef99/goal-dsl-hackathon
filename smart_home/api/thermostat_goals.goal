@@ -1,0 +1,67 @@
+TopicMsgParamGoal KitchenOn -> {
+  topic: "kitchen.thermostat";
+  condition: "state" == 1;
+}
+
+TopicMsgParamGoal KitchenOff -> {
+  topic: "kitchen.thermostat";
+  condition: "state" == 0;
+}
+
+TopicMsgParamGoal LivingroomOn -> {
+  topic: "livingroom.thermostat";
+  condition: "state" == 1;
+}
+
+TopicMsgParamGoal LivingroomOff -> {
+  topic: "livingroom.thermostat";
+  condition: "state" == 0;
+}
+
+TopicMsgParamGoal BedroomOn -> {
+  topic: "bedroom.thermostat";
+  condition: "state" == 1;
+}
+
+TopicMsgParamGoal BedroomOff -> {
+  topic: "bedroom.thermostat";
+  condition: "state" == 0;
+}
+
+TopicMsgParamGoal BathroomOn -> {
+  topic: "bathroom.thermostat";
+  condition: "state" == 1;
+}
+
+TopicMsgParamGoal BathroomOff -> {
+  topic: "bathroom.thermostat";
+  condition: "state" == 0;
+}
+
+TopicMsgParamGoal CorridorOn -> {
+  topic: "corridor.thermostat";
+  condition: "state" == 1;
+}
+
+TopicMsgParamGoal CorridorOff -> {
+  topic: "corridor.thermostat";
+  condition: "state" == 0;
+}
+
+ComplexGoal AllOff -> {
+  algorithm: ALL_ACCOMPLISHED;
+  addGoal(KitchenOff);
+  addGoal(LivingroomOff);
+  addGoal(BedroomOff);
+  addGoal(BathroomOff);
+  addGoal(CorridorOff);
+}
+
+ComplexGoal AllOn -> {
+  algorithm: ALL_ACCOMPLISHED;
+  addGoal(KitchenOn);
+  addGoal(LivingroomOn);
+  addGoal(BedroomOn);
+  addGoal(BathroomOn);
+  addGoal(CorridorOn);
+}
