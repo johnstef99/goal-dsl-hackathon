@@ -7,4 +7,4 @@ for example `project/automationX/gen`
 
 - [goal-dsl](https://github.com/robotics-4-all/goal-dsl)
 - [goal-dsl.vim](https://github.com/johnstef99/goal-dsl.vim) (syntax highlighting for vim)
-- [AUTH notes](https://notebook.johnstef.com/js-notebook/)
+- [AUTH notes](https://notebook.johnstef.com)
